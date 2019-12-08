@@ -38,29 +38,32 @@
     </div>
   </div>
 
-  <!-- 模态框 -->
-  <div  class="modal fade"id="modalId" tabindex="-1" role="dialog">
+  
+  <!-- Modal -->
+  <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-              aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Modal title</h4>
+          <h5 class="modal-title">提示</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
         <div class="modal-body">
           <div class="container-fluid">
+            Add rows here
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">确定</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">确认</button>
+          <!-- <button type="button" class="btn btn-primary">确认</button> -->
         </div>
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
+      </div>
+    </div>
+  </div>
 </body>
 <script src="./libs/http.js"></script>
 <script>
-  // 给登录按钮注册点击事件
   // 给登录按钮注册点击事件
   $(function () {
     $('.input_sub').on('click', function (e) {
@@ -70,11 +73,10 @@
       let userName = $('.input_txt').val().trim();
       let password = $('.input_pass').val().trim();
       //非空判断
-      if (userName == '' || password == '') {
-        // alert('用户名和密码不能为空');
+      if (userName === '' || password === '') {
         // 使用模态框
         $('.container-fluid').text('用户名和密码不能为空');
-        $('#modalId').modal();
+        $('#modelId').modal();
         return;
       };
       //ajax发送请求
@@ -83,17 +85,17 @@
         // 实现封装http
         url: BigNew.user_login,
         type: 'post',
-        dataType : 'json' ,
+        // dataType : 'json' ,
         data: {
           username : userName,
           password :password
         },
         success: function (res) {
           $('.container-fluid').text(res.msg);
-            $('#modalId').modal();
-          if (res.cod === 200) {
+            $('#modelId').modal();
+          if (res.code === 200) {
             // 使用模态框
-            $('#modalId').on('hidden.bs.modal',function (e){
+            $('#modelId').on('hidden.bs.modal',function (e){
               // 跳转页面
               localStorage.setItem('token', res.token)
             window.location.href = './index.html';
