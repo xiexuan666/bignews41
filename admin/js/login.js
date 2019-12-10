@@ -15,8 +15,6 @@
       };
       //ajax发送请求
       $.ajax({
-        // 实现封装http // url: 'http://localhost:8080/api/v1/admin/user/login',
-        // 实现封装http
         url: BigNew.user_login,
         type: 'post',
         // dataType : 'json' ,
@@ -25,6 +23,8 @@
           password :password
         },
         success: function (res) {
+          console.log(res);
+          
           $('.container-fluid').text(res.msg);
             $('#modelId').modal();
           if (res.code === 200) {
