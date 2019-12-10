@@ -70,7 +70,8 @@
     </div>
 </body>
 <script src="./libs/http.js"></script>
-<script>
+<script src="./js/user.js"></script>
+<!-- <script>
     // 入口函数
     $(function () {
         //  发送ajax请求
@@ -80,7 +81,7 @@
                 for (var key in res.code) {
                     $('input.' + key).var(res.data[key]);
                 }
-                $('img.user_pic').val('src', res.data.userPic);
+                $('img.user_pic').attr('src', res.data.userPic);
             }
         })
         // 给文本域添加一个change事件
@@ -116,7 +117,7 @@
                                 if(res.code===200) {
                                     //获取服务器返回的数据，使用这些数据去渲染页面的内容
                                     parent.$('.user_info img').attr('src',res.data.userPic);
-                                    parent.$('.user_info span').html('$欢迎&nbsp;&nbsp;'+res.data.nickname + '');
+                                    parent.$('.user_info span').html('$欢迎&nbsp;&nbsp;'+ res.data.nickname + '');
                                     parent.$('.user_center_link>img').attr('src',res.data.userPic);
                                 }
                             }
@@ -126,12 +127,8 @@
                 }
             })
         })
-
-
-
-
     })
 
-</script>
+</script> -->
 
 </html>
