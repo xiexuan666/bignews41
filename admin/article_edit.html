@@ -68,5 +68,12 @@
         </div>
     </div>
 </body>
-
+<script src="./libs/http.js"></script>
+<!-- 渲染模块 -->
+<script type="text/html" id="categoryList">
+{{each data}}
+<option value='{{$value.id}}'>{{$value.name}}></option>
+{{/each}}
+</script>
+<script src="./js/article_edit.js"></script>
 </html>

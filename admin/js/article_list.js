@@ -63,7 +63,7 @@ $(function(){
         });
       })
       //删除文章  删除是动态生成的，需要使用事件委托来注册
-      $('#tbody').on('click','delete',function(){
+      $('tbody').on('click','delete',function(){
         let artId = $(this).attr('data-id');
         if(confirm('你确定要删除吗')) {
             $.post({
