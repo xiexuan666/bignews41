@@ -10,8 +10,8 @@ $('#inputCover').on('change',function(){
 $.get ({
     url : BigNew.category_list,
     success : function(res) {
-        let htmSrc = template('categoryList'.res);
-        $('select.category').html(htmlStr);
+        let htmlSrc = template('categoryList',res);
+        $('select.category').html(htmlSrc);
     }
 })
 // 添加日期插件
@@ -23,7 +23,7 @@ jeDate("#testico",{
 })
 //添加富文本编辑器
 let E =  window.wangEditor
-var editor = new  E ('#Editor');
+var editor = new  E ('#editor');
 editor.create();
 //获取到文章的id？？？？？
 let articleId = location.search.split('=')[1];
