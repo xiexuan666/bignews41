@@ -10,10 +10,16 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/iconfont.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="./libs/jedate/css/jeDate-test.css">
+    <link rel="stylesheet" href="./libs/jedate/css/jedate.css">
     <!-- jq -->
     <script src="./libs/jquery-1.12.4.min.js"></script>
     <!-- 模板引擎 -->
     <script src="./libs/template-web.js"></script>
+    <!-- 日期插件的js文件 -->
+    <script src="./libs/jedate/js/jedate.js"></script>
+    <!-- wangEditor的js文件 -->
+    <script src="./libs/wangEditor.js"></script>
 </head>
 
 <body>
@@ -38,24 +44,29 @@
                 </div>
                 <div class="form-group">
                     <label for="inputCategory" class="col-sm-2 control-label">文章类别：</label>
-                    <div class="col-sm-4">
+                    <div class="col-sm-2">
                         <select class="form-control category" name="categoryId">
-                            <option>类别一</option>
-                            <option>类别二</option>
-                            <option>类别三</option>
-                            <option selected>类别四</option>
-                            <option>类别五</option>
+                            <!-- <option>类别一</option>
+                                <option>类别二</option>
+                                <option>类别三</option>
+                                <option selected>类别四</option>
+                                <option>类别五</option> -->
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">发布时间：</label>
                     <div class="col-sm-4">
+                        <input type="text" class="jeinput" id="testico" placeholder="YYYY-MM-DD" name="date">
+                        <div class="icons jebtns"
+                            onclick="jeDate('#testico',{trigger:false,format: 'YYYY-MM-DD',zIndex:30000})">
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">文章内容：</label>
-                    <div class="col-sm-10">
+                    <div  id="editor"  class="col-sm-8">
+                            <p>请尽情的展示的文采</p>
                     </div>
                 </div>
                 <div class="form-group">
@@ -68,5 +79,14 @@
         </div>
     </div>
 </body>
+<script src="./libs/http.js"></script>
+<!-- 数据渲染模板 -->
+<script  type="text/html" id="categoryList">
+    {{each data}}
+
+
+
+{{/each}}
+</script>
 
 </html>
