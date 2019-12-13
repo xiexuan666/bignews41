@@ -4,8 +4,10 @@ $(function () {
     $.get({
         url: BigNew.user_detail,
         success: function (res) {
-            for (var key in res.code) {
-                $('input.' + key).var(res.data[key]);
+            console.log(res);
+            
+            for (var key in res.data) {
+                $('input.' + key).val(res.data[key]);
             }
             $('img.user_pic').attr('src', res.data.userPic);
         }
@@ -34,16 +36,19 @@ $(function () {
             //不需要设置请求的类型
             contentType: false,
             success: function (res) {
+                // console.log(res)
                 if (res.code === 200) {
                     //在子页面刷新父页面
                     $.ajax({
-                        url : window.BigNew.user_edit,
+                        url :BigNew.user_detail,
                         type : 'get',
                         success : function(res) {
+                            console.log(res);
+                            
                             if(res.code===200) {
                                 //获取服务器返回的数据，使用这些数据去渲染页面的内容
                                 parent.$('.user_info img').attr('src',res.data.userPic);
-                                parent.$('.user_info span').html('$欢迎&nbsp;&nbsp;'+ res.data.nickname + '');
+                                parent.$('.user_info span').html('欢迎&nbsp;&nbsp;'+ res.data.nickname + '');
                                 parent.$('.user_center_link>img').attr('src',res.data.userPic);
                             }
                         }

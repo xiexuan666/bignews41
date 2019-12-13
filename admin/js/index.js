@@ -6,7 +6,7 @@ $(function () {
         url: BigNew.user_info,
         success: function (res) {
         $('.user_info img').attr('src', res.data.userPic);
-        $('.userPic span').html('欢迎&nbsp;&nbsp;'+ res.data.nickname + '');
+        $('.user_info span').html('欢迎&nbsp;&nbsp;'+ res.data.nickname + '');
         $('.user_center_link>img').attr('src', res.data.userPic);
         }
     })

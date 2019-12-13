@@ -77,7 +77,7 @@
 {{else if $value.state == '已通过'}}
 <a href="javascript:void(0);;" data-id='{{$value.id}}' class="btn btn-warning btn-xs btn-nopass">拒绝</a>
 {{else if $value.state == '已拒绝'}}
-<a href="javascript:void(0);;" data-id='{{$value.id}}' class="btn btn-primary btn-xs btn-pass">通过</a>
+<a href="javascript:void(0);;" data-id='{{$value.id}}' class="btn btn-success btn-xs btn-pass">通过</a>
 {{/if}}
  <a href="javascript:void(0);;" data-id='{{$value.id}}' class="btn btn-danger btn-xs btn-delete">删除</a>
   </td>
@@ -135,7 +135,7 @@ function getComData (pages,callback) {
       })
       // 给功能注册点击事件
       // 通过
-      $('tbody').on('click','btn-pass',function(){
+      $('tbody').on('click','.btn-pass',function(){
         let id = $(this).attr('data-id');
         $.post({
           url : BigNew.comment_pass,
@@ -149,20 +149,21 @@ function getComData (pages,callback) {
       })
 
       // 拒绝
-      $('tbody').on('click','btn-nopass',function(){
+      $('tbody').on('click','.btn-nopass',function(){
         let id = $(this).attr('data-id');
            $.post({
              url : BigNew.comment_reject,
-             dtaa : {
+             data : {
                id : id
              },
              success : function (res) {
+               
               getComData (mypage,function() { });
              }
            }) 
       })
     //  删除
-    $('tbody').on('click','btn-delete',function(){
+    $('tbody').on('click','.btn-delete',function(){
       let id = $(this).attr('data-id');
       if (confirm('亲,你确定要删除吗')) {
         $.post ({
